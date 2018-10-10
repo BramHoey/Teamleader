@@ -32,18 +32,7 @@ $teamleader = new Teamleader(CLIENT_ID,CLIENT_SECRET, USERNAME, PASSWORD, REDIRE
 <body>
 <?php
 try {
-    $token = $teamleader->getToken();
-    $var_str = var_export($token, true);
-    $var = "<?php\n\n\$token = $var_str;\n\n?>";
-    file_put_contents('token.php', $var);
-    $refresh = $teamleader->getRefreshToken();
-    $var_str = var_export($refresh, true);
-    $var = "<?php\n\n\$refresh = $var_str;\n\n?>";
-    file_put_contents('refreshtoken.php', $var);
-    $expire = $teamleader->getExpiredDate();
-    $var_str = var_export($expire, true);
-    $var = "<?php\n\n\$text = $expire;\n\n?>";
-    file_put_contents('expiredin.php', $var);
+    $response = $teamleader->crmGetContacts(1,1,'***');
 } catch (Exception $e) {
     var_dump($e);
 }

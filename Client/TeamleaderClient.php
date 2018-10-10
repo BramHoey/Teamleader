@@ -206,6 +206,10 @@ class TeamleaderClient
             try {
                 $res = $client->request($method, $endpoint, ['headers' => $headers,'form_params' => $options]);
             } catch (GuzzleException $e) {
+                if($e->getCode() == 401){
+                    $this->resetToken();
+                    $this->doCall($endpoint,$options,$method);
+                }
                 die($e->getMessage());
             }
             if($res->getStatusCode() == 200){

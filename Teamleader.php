@@ -45,11 +45,8 @@ class Teamleader
 
     public function getUser(){
         $options = array();
-        $options['client_id'] = $this->getClientID();
-        $options['client_secret'] = $this->getClientSecret();
-        $options['code'] = $this->getCode();
         $endPoint = 'users.me';
-        return $this->doRequest($endPoint,$options,'GET');
+        return $this->client->doCall($endPoint,$options,'GET');
     }
 
     public function getUserList($amount = 100, $page = 1){
@@ -93,7 +90,19 @@ class Teamleader
             $fields['selected_customfields'] = implode(',', $customFields);
         }
 
-        return $this->client->doCall('contacts.list', $fields,'GET');
+        $rawData = json_decode($this->client->doCall('contacts.list', $fields,'GET'))->data;
+
+        // validate response
+        if (!is_array($rawData)) {
+            throw new Exception($rawData);
+        }
+
+        $contacts = array();
+        foreach($rawData as $contact){
+            $contacts[] = Contact::initializeWithRawData($contact);
+        }
+
+        return $contacts;
     }
 
     /**

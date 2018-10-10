@@ -2,6 +2,7 @@
 
 namespace SumoCoders\Teamleader\Crm;
 
+use DateTime;
 use SumoCoders\Teamleader\Exception;
 use SumoCoders\Teamleader\Teamleader;
 
@@ -23,22 +24,23 @@ class Contact
     /**
      * @var string
      */
-    private $forename;
+    private $firstname;
 
     /**
      * @var string
      */
-    private $surname;
+    private $lastname;
 
     /**
-     * @var string
+     * @var array
      */
-    private $email;
+    private $emails;
+
 
     /**
-     * @var string
+     * @var array
      */
-    private $telephone;
+    private $telephones;
 
     /**
      * @var string
@@ -83,7 +85,12 @@ class Contact
     /**
      * @var array
      */
-    private $extraAddresses;
+    private $address;
+
+    /**
+     * @var array
+     */
+    private $primaryAddress;
 
     /**
      * @var string
@@ -111,14 +118,14 @@ class Contact
     private $bic;
 
     /**
-     * @var int
+     * @var datetime
      */
-    private $dateAdded;
+    private $addedAt;
 
     /**
-     * @var int
+     * @var datetime
      */
-    private $dateEdited;
+    private $updatedAt;
 
     /**
      * @var bool
@@ -215,19 +222,35 @@ class Contact
     }
 
     /**
-     * @param array $customFields
+     * @param array $address
      */
-    public function setExtraAddresses($extraAddresses)
+    public function setAddress($address)
     {
-        $this->extraAddresses = $extraAddresses;
+        $this->address = $address;
     }
 
     /**
      * @return array
      */
-    public function getExtraAddresses()
+    public function getAddress()
     {
-        return $this->extraAddresses;
+        return $this->address;
+    }
+
+    /**
+     * @param array $primaryAddress
+     */
+    public function setPrimaryAddress($primaryAddress)
+    {
+        $this->primaryAddress = $primaryAddress;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPrimaryAddress()
+    {
+        return $this->primaryAddress;
     }
 
     /**
@@ -292,35 +315,35 @@ class Contact
     }
 
     /**
-     * @param int $dateAdded
+     * @param datetime $addedAt
      */
-    public function setDateAdded($dateAdded)
+    public function setAddedAt($addedAt)
     {
-        $this->dateAdded = $dateAdded;
+        $this->addedAt = $addedAt;
     }
 
     /**
-     * @return int
+     * @return datetime
      */
-    public function getDateAdded()
+    public function getAddedAt()
     {
-        return $this->dateAdded;
+        return $this->addedAt;
     }
 
     /**
-     * @param int $dateEdited
+     * @param datetime $updatedAt
      */
-    public function setDateEdited($dateEdited)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->dateEdited = $dateEdited;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
-     * @return int
+     * @return datetime
      */
-    public function getDateEdited()
+    public function getUpdatedAt()
     {
-        return $this->dateEdited;
+        return $this->updatedAt;
     }
 
     /**
@@ -356,19 +379,19 @@ class Contact
     }
 
     /**
-     * @param string $email
+     * @param array $emails
      */
-    public function setEmail($email)
+    public function setEmails($emails)
     {
-        $this->email = $email;
+        $this->emails = $emails;
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getEmail()
+    public function getEmails()
     {
-        return $this->email;
+        return $this->emails;
     }
 
     /**
@@ -388,19 +411,19 @@ class Contact
     }
 
     /**
-     * @param string $forename
+     * @param string $firstname
      */
-    public function setForename($forename)
+    public function setFirstname($firstname)
     {
-        $this->forename = $forename;
+        $this->firstname = $firstname;
     }
 
     /**
      * @return string
      */
-    public function getForename()
+    public function getFirstname()
     {
-        return $this->forename;
+        return $this->firstname;
     }
 
     /**
@@ -500,35 +523,35 @@ class Contact
     }
 
     /**
-     * @param string $surname
+     * @param string $lastname
      */
-    public function setSurname($surname)
+    public function setLastname($lastname)
     {
-        $this->surname = $surname;
+        $this->lastname = $lastname;
     }
 
     /**
      * @return string
      */
-    public function getSurname()
+    public function getLastname()
     {
-        return $this->surname;
+        return $this->lastname;
     }
 
     /**
-     * @param string $telephone
+     * @param array $telephones
      */
-    public function setTelephone($telephone)
+    public function setTelephones($telephones)
     {
-        $this->telephone = $telephone;
+        $this->telephones = $telephones;
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getTelephone()
+    public function getTelephones()
     {
-        return $this->telephone;
+        return $this->telephones;
     }
 
     /**

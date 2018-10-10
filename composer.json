@@ -16,7 +16,7 @@
 		"ext-curl": "*",
 		"guzzlehttp/guzzle": "^6.3",
 		"league/oauth2-client": "^2.3"
-	},
+    },
 	"target-dir": "SumoCoders/Teamleader",
 	"autoload": {
 		"psr-0": {"SumoCoders\\Teamleader": ""}
