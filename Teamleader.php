@@ -91,6 +91,10 @@ class Teamleader
         }
 
         $rawData = json_decode($this->client->doCall('contacts.list', $fields,'GET'))->data;
+        $fields['amount'] = $amount;
+        $fields['searchby'] = '%'.$searchBy.'%';
+        $fields['pageno'] = 0;
+        $rawDatav1 = json_decode($this->client->doCallV1('api/getContacts.php',$fields,'POST'));
 
         // validate response
         if (!is_array($rawData)) {
@@ -98,8 +102,10 @@ class Teamleader
         }
 
         $contacts = array();
-        foreach($rawData as $contact){
-            $contacts[] = Contact::initializeWithRawData($contact);
+        foreach($rawData as $key => $contact){
+            $contactObj = Contact::initializeWithRawData($contact);
+            $contactObj->setOldId($rawDatav1[$key]->id);
+            $contacts[] = $contactObj;
         }
 
         return $contacts;

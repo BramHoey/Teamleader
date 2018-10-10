@@ -32,7 +32,7 @@ $teamleader = new Teamleader(CLIENT_ID,CLIENT_SECRET, USERNAME, PASSWORD, REDIRE
 <body>
 <?php
 try {
-    $response = $teamleader->crmGetContacts(1,1,'***');
+    $response = $teamleader->crmGetContacts(1,1,'evelyn.goffin@kuleuven.be');
 } catch (Exception $e) {
     var_dump($e);
 }

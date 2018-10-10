@@ -17,9 +17,14 @@ use SumoCoders\Teamleader\Teamleader;
 class Contact
 {
     /**
-     * @var int
+     * @var string
      */
     private $id;
+
+    /**
+     * @var int
+     */
+    private $oldId;
 
     /**
      * @var string
@@ -475,7 +480,7 @@ class Contact
     }
 
     /**
-     * @param int $id
+     * @param string $id
      */
     public function setId($id)
     {
@@ -483,11 +488,27 @@ class Contact
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param int $oldId
+     */
+    public function setOldId($oldId)
+    {
+        $this->oldId = $oldId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOldId()
+    {
+        return $this->oldId;
     }
 
     /**
