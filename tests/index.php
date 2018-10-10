@@ -32,24 +32,6 @@ $teamleader = new Teamleader(CLIENT_ID,CLIENT_SECRET, USERNAME, PASSWORD, REDIRE
 <body>
 <?php
 try {
-
-    $task = new \SumoCoders\Teamleader\Tasks\Task();
-    $task->setDueDate(time());
-    $task->setStartDate('2016-02-04T16:00:00+00:00');
-    $task->setDescription('Dit is een test');
-//    $task->setForId('d0a81ce0-3bcc-09a6-ba77-931281950386'); V2
-    $task->setForId(26542982);
-    $task->setFor('contact');
-    $task->setTeamId(29356);
-//    $task->setTaskTypeId('ef564ba8-437d-0de5-8d17-bffd231ba552'); V2
-    $task->setTaskTypeId(55486);
-    $task->setWorkTypeId('af6e0e3a-c1b5-0b4a-9c4b-76435e46d8be');
-    $task->setPriority('B');
-
-    $response = $teamleader->crmAddTask($task);
-
-//    $response = $teamleader->getTaskTypes();
-
     $token = $teamleader->getToken();
     $var_str = var_export($token, true);
     $var = "<?php\n\n\$token = $var_str;\n\n?>";
