@@ -26,6 +26,9 @@ use \SumoCoders\Teamleader\Invoices\InvoiceLine;
 $teamleader = new Teamleader(API_GROUP, API_KEY);
 
 try {
+
+//    $response = $teamleader->dealsGetDealsChanged(date('d/m/Y'),date('d/m/Y'),130069);
+
     // $response = $teamleader->helloWorld();
 
    // $response = $teamleader->crmGetContacts();

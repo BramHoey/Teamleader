@@ -904,6 +904,36 @@ class Teamleader
     }
 
     /**
+     * Search for deals
+     *
+     * @param string $date_from    The date from to search
+     * @param string $date_to  The date to to search
+     * @param int    $phaseId   Teamleader will return only deals that are in this phase right now.
+     *
+     * @return Deal[]
+     */
+    public function dealsGetDealsChanged($date_from = null, $date_to = null, $phaseId = null)
+    {
+        $fields = array();
+        $fields['date_from'] = $date_from;
+        $fields['date_to'] = $date_to;
+
+        $rawData = $this->doCall('getAllDealPhaseChanges.php', $fields);
+        $return = array();
+
+        if (!empty($rawData)) {
+            foreach ($rawData as $row) {
+                $deal = $this->dealsGetDeal($row['deal_id']);
+                if($phaseId != null && $deal->getPhaseId() == $phaseId){
+                    $return[] = $deal;
+                }
+            }
+        }
+
+        return $return;
+    }
+
+    /**
      * Adds an opportunity
      *
      * @param  Deal $deal
