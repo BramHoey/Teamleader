@@ -925,7 +925,7 @@ class Teamleader
             foreach ($rawData as $row) {
                 $deal = $this->dealsGetDeal($row['deal_id']);
                 if($phaseId != null && $deal->getPhaseId() == $phaseId){
-                    $return[] = $deal;
+                    $return[$deal->getId()] = $deal;
                 }
             }
         }
