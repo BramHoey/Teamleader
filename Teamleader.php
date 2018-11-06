@@ -928,6 +928,7 @@ class Teamleader
                     if ($phaseId != null && $deal->getPhaseId() == $phaseId) {
                         $return[$deal->getId()] = $deal;
                     }
+                    sleep(1);
                 } else {
                     print_r($rawData);
                 }
