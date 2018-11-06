@@ -923,9 +923,13 @@ class Teamleader
 
         if (!empty($rawData)) {
             foreach ($rawData as $row) {
-                $deal = $this->dealsGetDeal($row['deal_id']);
-                if($phaseId != null && $deal->getPhaseId() == $phaseId){
-                    $return[$deal->getId()] = $deal;
+                if(isset($row['deal_id'])) {
+                    $deal = $this->dealsGetDeal($row['deal_id']);
+                    if ($phaseId != null && $deal->getPhaseId() == $phaseId) {
+                        $return[$deal->getId()] = $deal;
+                    }
+                } else {
+                    print_r($rawData);
                 }
             }
         }
